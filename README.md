@@ -1,2 +1,2 @@
 # desafio_latam_final
-Proyecto Final de Curso
+Proyecto Final de Curso React
