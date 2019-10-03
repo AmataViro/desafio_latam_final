@@ -35,11 +35,7 @@ export const productAsyncAtionCreate = (data) => {
     return (dispatch)=>{
         dispatch(productActionCreateStart());
         productsCreate(data).then(res=>{
-            dispatch(productActionCreateSucces()); 
-
-            // dispatch(productAsyncAction(res.data.data));
-            // dispatch(productActionSucces(res.data.data));
-             
+            dispatch(productActionCreateSucces());              
       }).catch(error=>{
           dispatch(productActionCreateError(error.data));
       });

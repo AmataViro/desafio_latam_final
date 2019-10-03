@@ -23,6 +23,7 @@ export const productsCreate = async (data) => {
     try {
         return await axios.post(`${apiHost}/api/product`, data, {
             headers: {
+                authorization: `bearer ${prevJwt}`,
                 data: data,
             },
         });
@@ -38,6 +39,7 @@ export const productsDelete = async (data) => {
     try {
         return await axios.delete(`${apiHost}/api/product/${data.id}`, {
             headers: {
+                authorization: `bearer ${prevJwt}`,
                 data: data,
             },
         });
@@ -49,12 +51,10 @@ export const productsDelete = async (data) => {
 };
 
 export const productsUpdate = async (data) => {
-    console.log('.....................');
-    console.log(data);
     try {
         return await axios.put(`${apiHost}/api/product/${data.id}`,data,{
             headers: {
-                // token
+                authorization: `bearer ${prevJwt}`,
             },
         });
     } catch (error) {

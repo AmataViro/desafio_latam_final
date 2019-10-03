@@ -19,13 +19,13 @@ const FormCreate = (props) => {
                     "description":description.value,
                     "price":price.value};
         dispatch(productAsyncAtionCreate(array)); 
-        props.history.push('/product');
+        props.history.push('/dashboard/product');
     }
 
     return (
         <Container>
             <Card>
-                <CardHeader>Creación de usuario</CardHeader>
+                <CardHeader>Creación de Producto</CardHeader>
                 <Form onSubmit={handlerSubmit}>
                     <CardBody>
                         <FormGroup row>

@@ -12,13 +12,13 @@ const Login = (props) => {
 
 
     const email = useGenericInput('', 'email');
-    const password = useGenericInput('', 'text');
+    const password = useGenericInput('', 'password');
 
     const buttonIsDisabled = () => password.value === '' || email.value === '';
 
     useEffect(() => {
         if (jwt !== null) {
-            props.history.push('algo')
+            props.history.push('dashboard/welcome')
         }
     }, [jwt])
 
@@ -27,7 +27,7 @@ const Login = (props) => {
             <Row>
                 <Col sm={{ size: 4, offset: 4}}>
                     <Card>
-                        <CardHeader>Inicio de sesión</CardHeader>
+                        <CardHeader className={'card text-white bg-info mb-3'}>Inicio de sesión</CardHeader>
                         <CardBody>
                             <Form>
                                 <pre className="text-left">
@@ -41,6 +41,7 @@ const Login = (props) => {
                                     <Input {...password} />
                                 </FormGroup>
                                 <Button
+                                    variant="primary"
                                     disabled={buttonIsDisabled()}
                                     onClick={() => dispatch(loginAction(email.value, password.value))}
                                 >Iniciar Sesión</Button>

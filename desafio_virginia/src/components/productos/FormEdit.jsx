@@ -21,13 +21,13 @@ const FormEdit = (props) => {
                     "description":description.value,
                     "price":price.value};
         dispatch(productAsyncAtionUpdate(array)); 
-        props.history.push('/product');
+        props.history.push('/dashboard/product');
     }
 
     return (
         <Container>
             <Card>
-                <CardHeader>Editar de usuario</CardHeader>
+                <CardHeader>Editar Producto</CardHeader>
                 <Form onSubmit={handlerSubmit}>
                     <CardBody>
                         <FormGroup row>

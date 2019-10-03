@@ -4,6 +4,7 @@ import { Container, Table, Card, CardHeader, CardBody, Button } from 'reactstrap
 import { productAsyncAction, productAsyncAtionDelete} from './../../store/modules/product/product.action';
 import {Spinner} from 'reactstrap';
 import { Link } from "react-router-dom";
+import { FaPlusCircle, FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
 
 const Home = (props) => {
 const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const dispatch = useDispatch();
 const handleDelete = (e) => {
   return () => {
     dispatch(productAsyncAtionDelete(e)); 
-    props.history.push('/product');
+    props.history.push('/dashboard/product');
   }
     
 }
@@ -21,12 +22,11 @@ const handleDelete = (e) => {
   }, [dispatch]);
 
   const data = useSelector( datos => datos.producto.getAll.data);
-  console.log('--------------------------->',data);
     return (
       <Container>
             <Card>
           <CardHeader className="text-right">
-            <Link to="/createproduct"> <Button style={{ color: 'white' }} color="info"> Agregar </Button> </Link>
+            <Link to="/dashboard/createproduct"> <Button style={{ color: 'white' }} color="info"> Agregar Producto <FaPlusCircle /> </Button> </Link>
           </CardHeader>
           <CardBody>
             
@@ -49,14 +49,14 @@ const handleDelete = (e) => {
                     <td>{e.description}</td>
                     <td>{e.price}</td>
                     <td><Link to={{
-                          pathname: '/updateproduct', state: {
+                          pathname: '/dashboard/updateproduct', state: {
                           data: e
                           }
                         }}>
-                                          <Button color="primary">Modificar </Button> 
+                          <Button color="primary">Modificar <FaPencilAlt/></Button> 
                           </Link>
                     </td>
-                    <td><Button color='danger' onClick={handleDelete(e)}>Eliminar</Button></td>
+                    <td><Button color='danger' onClick={handleDelete(e)}>Eliminar <FaTrashAlt /></Button></td>
                   </tr>
                       
                       
