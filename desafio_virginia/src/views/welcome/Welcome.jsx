@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react';
-
+import React from 'react';
+import {Container} from 'reactstrap';
+import Jumbotron from '../../components/jumbotron-project/Jumbotron-project';
 const Welcome = (props) => {
     return (
         <div className="user-list-view">
-            bienvenido
+            <Container>
+            <Jumbotron />
+            </Container>
         </div>
     );
 };

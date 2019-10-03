@@ -33,7 +33,11 @@ export const loginActionsAsyncCreator = (email, password) => {
 
         loginService({username: email, password: password }).then(data => {
             localStorage['token']= data.token;
-            dispatch(successActionCreator(data.data));
+            if(data.message === 'success'){
+                dispatch(successActionCreator(data.token));
+            }else{
+                dispatch(errorActionCreator(data.message));
+            }
         }).catch(err => {
             dispatch(errorActionCreator(err));
         })

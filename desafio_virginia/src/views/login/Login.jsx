@@ -8,19 +8,19 @@ const Login = (props) => {
     const dispatch = useDispatch();
 
     const jwt = useSelector(store => store.auth.auth.data);
-    console.log(JSON.stringify(jwt));
-
-
+    const error = useSelector(store => store.auth.auth.error);
+    const errorMessage = useSelector(store => store.auth.auth.errorMessage);
     const email = useGenericInput('', 'email');
     const password = useGenericInput('', 'password');
 
     const buttonIsDisabled = () => password.value === '' || email.value === '';
 
     useEffect(() => {
-        if (jwt !== null) {
+        
+        if (jwt !== null && jwt !== undefined) {
             props.history.push('dashboard/welcome')
         }
-    }, [jwt])
+    }, [jwt,error])
 
     return (
         <Container className="mt-4">
@@ -46,6 +46,7 @@ const Login = (props) => {
                                     onClick={() => dispatch(loginAction(email.value, password.value))}
                                 >Iniciar Sesión</Button>
                             </Form></CardBody>
+                            {error && (<div>{errorMessage}</div>)}
                     </Card>
                 </Col>
             </Row>

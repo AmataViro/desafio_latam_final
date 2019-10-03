@@ -22,7 +22,8 @@ const productActionUpdateError = (data) => ({ type: ERROR, payload: data });
 export const productAsyncAction = () => {
     return (dispatch)=>{
         dispatch(productActionStart());
-        productsGetAll().then(res=>{
+        const token = localStorage.token;
+        productsGetAll(token).then(res=>{
           dispatch(productActionSucces(res.data.data));
             
       }).catch(error=>{
@@ -46,7 +47,7 @@ export const productAsyncAtionDelete = (data) => {
     return (dispatch)=>{
         dispatch(productActionDeleteStart());
         productsDelete(data).then(res=>{
-            dispatch(productAsyncAction(res.data.data));
+            dispatch(productAsyncAction());
             dispatch(productActionDeleteSucces(res.data.data));  
       }).catch(error=>{
           dispatch(productActionDeleteError(error.data));

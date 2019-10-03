@@ -3,13 +3,12 @@ import { apiHost } from '../configure';
 
 class ApiError extends Error { }
 const prevJwt = localStorage.getItem('token');
-// const prevJwt = () => JSON.parse(localStorage.getItem('jwt')) || '';
 
-export const productsGetAll = async (data) => {
+export const productsGetAll = async (token) => {
     try {
         return await axios.get(`${apiHost}/api/product`, {
             headers: {
-                authorization: `bearer ${prevJwt}`,
+                authorization: `bearer ${token}`,
             },
         });
     } catch (error) {
@@ -35,7 +34,6 @@ export const productsCreate = async (data) => {
 };
 
 export const productsDelete = async (data) => {
-    console.log(data);
     try {
         return await axios.delete(`${apiHost}/api/product/${data.id}`, {
             headers: {

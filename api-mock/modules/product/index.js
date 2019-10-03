@@ -42,7 +42,6 @@ const productModule = (app, db) => {
         });
     });
 
-    // app.post("/api/product", middleware.ensureToken, async (req, res, next) => {
     app.post("/api/product", middleware.ensureToken,async (req, res, next) => {
         console.log(req);
         var errors = []
@@ -106,7 +105,6 @@ const productModule = (app, db) => {
             });
     })
 
-    // app.delete("/api/product/:id", middleware.ensureToken, (req, res, next) => {
     app.delete("/api/product/:id", middleware.ensureToken, (req, res, next) => {
         db.run(
             'DELETE FROM product WHERE id = ?',
